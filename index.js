@@ -9,7 +9,6 @@ const ejsMate = require("ejs-mate");
 const Str_Random = require("./generate_random_string.js");
 var mongoose = require("mongoose");
 const User = require("./user.model");
-const Task = require("./task.model");
 require("dotenv").config();
 
 //App Setup
@@ -76,49 +75,6 @@ User.countDocuments({}).then((count) => {
       })
       .catch((err) => {
         console.error("Error inserting users:", err);
-      });
-    console.log("The collection is empty.");
-  }
-});
-
-//Insert seed data in DB if the document is empty
-Task.countDocuments({}).then((count) => {
-  if (count > 0) {
-    console.log("The collection has entries." + count);
-  } else {
-    tasks = [
-      { username: "theodorealletez03", task: message },
-      { username: "theodorealletez03", task: "Participate in a Water Fight" },
-      {
-        username: "theodorealletez03",
-        task: "Complete an Instagram Month Challenge",
-      },
-      { username: "theodorealletez03", task: "Learn to Float in Water" },
-      { username: "michaelbaker01", task: "Participate in a Swimming Race" },
-      { username: "michaelbaker01", task: "Hike in Gros Morne National Park" },
-      { username: "michaelbaker01", task: "Crowd Surf at a Rock Concert" },
-      { username: "michaelbaker01", task: "Descend the Banaue Rice Terraces" },
-      { username: "michaelbaker01", task: "Take a Caribbean Cruise" },
-      { username: "angelmendoza02", task: "Climb 5 Mountains" },
-      { username: "angelmendoza02", task: "Go Kayaking" },
-      { username: "angelmendoza02", task: "Run a Spartan Race" },
-      { username: "angelmendoza02", task: "Do Something I Love For a Living" },
-      { username: "angelmendoza02", task: "Own a Harley-Davidson" },
-      { username: "lucasallen04", task: "Ski Whistler" },
-      { username: "lucasallen04", task: "Design my Own Pair of Converse" },
-      { username: "lucasallen04", task: "Walk Across the Golden Gate Bridge" },
-      { username: "lucasallen04", task: "Try Haggis in Scotland" },
-      {
-        username: "lucasallen04",
-        task: "Complete 26 Random Acts of Kindness",
-      },
-    ];
-    Task.insertMany(tasks)
-      .then((docs) => {
-        console.log("Tasks inserted:", docs);
-      })
-      .catch((err) => {
-        console.error("Error inserting tasks:", err);
       });
     console.log("The collection is empty.");
   }
