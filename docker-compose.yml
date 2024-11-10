@@ -4,7 +4,7 @@ volumes:
 
 services:
   app:
-    container_name: insurance_agents_portal
+    container_name: nosql_operator_injection_vulnerable_app
     build: .
     ports:
       - "8000:8000"
